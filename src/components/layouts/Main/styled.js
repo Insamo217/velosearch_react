@@ -17,10 +17,11 @@ export const Title = styled.h2`
   -webkit-text-stroke: 2px #825534;
 `;
 
-export const SubTitle = styled.p`
-  font-size: 30px;
-  -webkit-text-stroke: 1px #825534;
-  margin-bottom: 50px;
+export const SubTitle = styled.span`
+  font-size: 20px;
+  font-family: "Seymour One";
+  background-color: #765c45;
+  padding: 5px;
 `;
 
 export const BtnTitle = styled.p`

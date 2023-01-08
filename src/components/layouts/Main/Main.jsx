@@ -7,7 +7,7 @@ function Main() {
       <div className="container">
         <Title>Bike Search</Title>
         <SubTitle>Поиск пропавших велосипедов </SubTitle>
-        <button type="button" className="btn btn-warning">
+        <button type="button" className="btn btn-warning d-block m-auto mt-5">
           <BtnTitle>Сообщить о краже</BtnTitle>
         </button>
       </div>

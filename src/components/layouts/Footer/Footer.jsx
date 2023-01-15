@@ -1,13 +1,13 @@
 import React from "react";
 import { FooterStyles } from "./styled";
 
-function Footer() {
+function Footer({ infoText }) {
   return (
     <FooterStyles>
       <div className="container">
         <div className="row">
           <div className="col-md-9">
-            <p>© 2023 Учебный проект Skillfactory</p>
+            <p>{infoText}</p>
           </div>
 
           <div className="col-md-3">

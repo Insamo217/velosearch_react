@@ -1,14 +1,14 @@
 import React from "react";
 import { MainStyles, Title, SubTitle, BtnTitle } from "./styled";
 
-function Main() {
+function Main({ title, subtitle, btntext }) {
   return (
     <MainStyles>
       <div className="container">
-        <Title>Bike Search</Title>
-        <SubTitle>Поиск пропавших велосипедов </SubTitle>
+        <Title>{title}</Title>
+        <SubTitle>{subtitle}</SubTitle>
         <button type="button" className="btn btn-warning d-block m-auto mt-5">
-          <BtnTitle>Сообщить о краже</BtnTitle>
+          <BtnTitle>{btntext}</BtnTitle>
         </button>
       </div>
     </MainStyles>

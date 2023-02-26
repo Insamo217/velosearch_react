@@ -1,6 +1,7 @@
 import React from "react";
 import { HeaderStyles } from "./styled";
 import logo from "assets/logo6.png";
+import { Link } from "react-router-dom";
 
 function Header({ phone, mail, btnNameLogin, btnNameSign }) {
   return (
@@ -8,7 +9,9 @@ function Header({ phone, mail, btnNameLogin, btnNameSign }) {
       <div className="container">
         <div class="row align-items-center">
           <div className="col-md-5">
-            <img src={logo} alt="" />
+            <Link to={"/"}>
+              <img src={logo} alt="" />
+            </Link>
           </div>
           <div className="col-md-2">
             <svg
@@ -38,12 +41,12 @@ function Header({ phone, mail, btnNameLogin, btnNameSign }) {
           </div>
           <div className="col-md-1">
             <button type="button" class="btn btn-outline-light">
-              {btnNameLogin}
+              <Link to={"/login/"}>{btnNameLogin}</Link>
             </button>
           </div>
           <div className="col-md-1">
             <button type="button" class="btn btn-warning">
-              {btnNameSign}
+              <Link to={"/registration/"}>{btnNameSign}</Link>
             </button>
           </div>
         </div>

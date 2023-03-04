@@ -41,12 +41,12 @@ function Header({ phone, mail, btnNameLogin, btnNameSign }) {
           </div>
           <div className="col-md-1">
             <button type="button" class="btn btn-outline-light">
-              <Link to={"/login/"}>{btnNameLogin}</Link>
+              <Link to={"/auth/sign_in/"}>{btnNameLogin}</Link>
             </button>
           </div>
           <div className="col-md-1">
             <button type="button" class="btn btn-warning">
-              <Link to={"/registration/"}>{btnNameSign}</Link>
+              <Link to={"auth/sign_up"}>{btnNameSign}</Link>
             </button>
           </div>
         </div>

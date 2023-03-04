@@ -3,7 +3,9 @@ import React from "react";
 function Report() {
   return (
     <>
-      <p>Форма заявки</p>
+      <div className="container">
+        <p>Форма заявки</p>
+      </div>
     </>
   );
 }

@@ -10,6 +10,11 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  a {
+    color: unset;
+    text-decoration: auto;
+  }
 `;
 
 export default GlobalStyle;

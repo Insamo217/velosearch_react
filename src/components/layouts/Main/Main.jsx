@@ -9,7 +9,7 @@ function Main({ title, subtitle, btntext }) {
         <Title>{title}</Title>
         <SubTitle>{subtitle}</SubTitle>
         <button type="button" className="btn btn-warning d-block m-auto mt-5">
-          <Link to={"/report/"}>
+          <Link to={"/public/report/"}>
             <BtnTitle>{btntext}</BtnTitle>
           </Link>
         </button>

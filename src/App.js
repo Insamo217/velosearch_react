@@ -7,6 +7,8 @@ import Main from "components/layouts/Main/Main";
 import Header from "components/layouts/Header/Header";
 import Footer from "components/layouts/Footer/Footer";
 import Report from "components/blocks/Report/Report";
+import Messages from "components/blocks/Messages/Messages";
+import AllOfficers from "components/blocks/AllOfficers/AllOfficers";
 import { useState } from "react";
 import axios from "axios";
 
@@ -104,7 +106,7 @@ function App() {
           }
         />
         <Route
-          path="/report/"
+          path="public/report"
           element={
             <>
               <GlobalStyle />
@@ -112,6 +114,26 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/officers"
+          element={
+            <AllOfficers approved={approved} setApproved={setApproved} />
+          }
+        ></Route>
+        <Route
+          path="/cases/"
+          element={<Messages approved={approved} setApproved={setApproved} />}
+        ></Route>
+        <Route
+          path="/officers/:id"
+          element={
+            <AllOfficers approved={approved} setApproved={setApproved} />
+          }
+        ></Route>
+        <Route
+          path="/cases/:id"
+          element={<Messages approved={approved} setApproved={setApproved} />}
+        ></Route>
       </Routes>
       <Footer infoText="© 2023 Учебный проект Skillfactory" />
     </Router>

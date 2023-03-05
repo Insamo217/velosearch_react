@@ -5,9 +5,9 @@ export const MainStyles = styled.main`
   position: relative;
   background-image: url(${img});
   background-size: cover;
-  height: 826px;
   color: white;
   text-align: center;
+  height: 826px;
   padding-top: 150px;
 `;
 

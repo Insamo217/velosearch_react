@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { ReportDetailStyles } from "./styled";
+import { ButtonClose } from "globalStyles";
 
 function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
   const { id } = useParams();
@@ -110,15 +112,18 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
       });
   };
   return (
-    <div className="modalDetail">
-      <div className="modalContainer">
-        <h3>Детали кражи</h3>
-
-        <Link to={`/cases/`}>
-          <span onClick={() => setDetail(!detail)}>X</span>
-        </Link>
-
-        <div>
+    <ReportDetailStyles>
+      <h3>Детали кражи</h3>
+      <Link to={`/cases/`}>
+        <ButtonClose
+          type="button"
+          className="btn-close btn-close-white"
+          aria-label="Close"
+          onClick={() => setDetail(!detail)}
+        ></ButtonClose>
+      </Link>
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column">
           <label>
             Номер заявки <br />
             <input type="text" value={report._id} disabled />
@@ -156,7 +161,7 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
             />
           </label>
         </div>
-        <div>
+        <div class="col-md-6 d-flex flex-column">
           <label>
             Описание
             <br />
@@ -220,86 +225,86 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
             />
           </label>
         </div>
-        <div>
-          {status === "done" && (
-            <label>
-              Решение
-              <br />
-              <input
-                onChange={(e) => setResolution(e.target.value)}
-                type="text"
-                value={resolution}
-                style={{
-                  color: editMode && "black",
-                  backgroundColor: editMode && "white",
-                }}
-                disabled={!editMode ? true : false}
-                required
-              />
-            </label>
-          )}
-
-          <label>
-            Статус
-            <br />
-            <select
-              onChange={(e) => setStatus(e.target.value)}
-              defaultValue={"default"}
-              value={status}
-              style={{
-                color: editMode && "black",
-                backgroundColor: editMode && "white",
-              }}
-              disabled={!editMode ? true : false}
-            >
-              <option value="new">new</option>
-
-              <option value="in_progress">in_progress</option>
-              <option value="done">done</option>
-            </select>
-          </label>
-          <label>
-            Тип
-            <br />
-            <select
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              style={{
-                color: editMode && "black",
-                backgroundColor: editMode && "white",
-              }}
-              disabled={!editMode ? true : false}
-            >
-              <option value="sport">sport</option>
-              <option value="general">general</option>
-            </select>
-          </label>
-          <label>
-            Обновлено
-            <br />
-            <input type="text" value={report.updatedAt} disabled />
-          </label>
-        </div>
-        {(!editMode && (
-          <div
-            onClick={() => setEdit(!editMode)}
-            className="editDetail"
-            role="button"
-          >
-            Редактировать
-          </div>
-        )) || (
-          <div onClick={handleSubmit} className="saveDetail" role="button">
-            Сохранить
-          </div>
-        )}
-        <Link to={`/cases/`}>
-          <div onClick={handleDelete} className="deleteDetail" role="button">
-            Удалить
-          </div>
-        </Link>
       </div>
-    </div>
+      <div className="d-flex flex-column">
+        {status === "done" && (
+          <label>
+            Решение
+            <br />
+            <input
+              onChange={(e) => setResolution(e.target.value)}
+              type="text"
+              value={resolution}
+              style={{
+                color: editMode && "black",
+                backgroundColor: editMode && "white",
+              }}
+              disabled={!editMode ? true : false}
+              required
+            />
+          </label>
+        )}
+
+        <label>
+          Статус
+          <br />
+          <select
+            onChange={(e) => setStatus(e.target.value)}
+            defaultValue={"default"}
+            value={status}
+            style={{
+              color: editMode && "black",
+              backgroundColor: editMode && "white",
+            }}
+            disabled={!editMode ? true : false}
+          >
+            <option value="new">new</option>
+
+            <option value="in_progress">in_progress</option>
+            <option value="done">done</option>
+          </select>
+        </label>
+        <label>
+          Тип
+          <br />
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            style={{
+              color: editMode && "black",
+              backgroundColor: editMode && "white",
+            }}
+            disabled={!editMode ? true : false}
+          >
+            <option value="sport">sport</option>
+            <option value="general">general</option>
+          </select>
+        </label>
+        <label>
+          Обновлено
+          <br />
+          <input type="text" value={report.updatedAt} disabled />
+        </label>
+      </div>
+      {(!editMode && (
+        <div
+          onClick={() => setEdit(!editMode)}
+          className="editDetail"
+          role="button"
+        >
+          Редактировать
+        </div>
+      )) || (
+        <div onClick={handleSubmit} className="saveDetail" role="button">
+          Сохранить
+        </div>
+      )}
+      <Link to={`/cases/`}>
+        <div onClick={handleDelete} className="deleteDetail" role="button">
+          Удалить
+        </div>
+      </Link>
+    </ReportDetailStyles>
   );
 }
 

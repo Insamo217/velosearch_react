@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { OfficerDetailStyles } from "./styled";
+import { ButtonClose } from "globalStyles";
 
 function OfficerDetails({ detail, setDetail, info, allWorkers }) {
   const { id } = useParams();
@@ -67,71 +69,66 @@ function OfficerDetails({ detail, setDetail, info, allWorkers }) {
       });
   };
   return (
-    <div className="details">
-      <div className="businessCard">
-        <div className="detailContainer">
-          <div>
-            <Link to={`/officers/`}>
-              <span className="link" onClick={() => setDetail(!detail)}>
-                X
-              </span>
-            </Link>
+    <OfficerDetailStyles>
+      <Link to={`/officers/`}>
+        <ButtonClose
+          type="button"
+          className="btn-close btn-close-white"
+          aria-label="Close"
+          onClick={() => setDetail(!detail)}
+        ></ButtonClose>
+      </Link>
 
-            <form className="surname">
-              <label htmlFor="">Имя:</label>
-              <input
-                onChange={(e) => setName(e.target.value)}
-                disabled={!editMode ? true : false}
-                type="text"
-                value={firstName}
-              />
-              <label htmlFor="">Фамилия:</label>
-              <input
-                onChange={(e) => setSurname(e.target.value)}
-                type="text"
-                value={lastName}
-                disabled={!editMode ? true : false}
-              />
-              <label>Эл.почта:</label>
-              <input type="text" value={officer.email} disabled />
-              <label>Пароль:</label>
-              <input
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                value={password}
-                disabled
-              />
-              <label>Идент.номер:</label>
-              <input type="text" value={officer._id} disabled />
-              <div className="approved">
-                <label>Одобрен</label>
-                <input
-                  type="checkbox"
-                  value={approved}
-                  disabled={!editMode ? true : false}
-                  checked={approved}
-                  onChange={() => setApproved(!approved)}
-                />
-              </div>
-              <div className="butts">
-                {(!editMode && (
-                  <button className="edit" onClick={handleEdit}>
-                    редактировать
-                  </button>
-                )) || (
-                  <button className="saveRedact" onClick={handleSubmit}>
-                    сохранить
-                  </button>
-                )}
-                <button className="delete" onClick={handleDelete}>
-                  удалить
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+      <label htmlFor="">Имя:</label>
+      <input
+        onChange={(e) => setName(e.target.value)}
+        disabled={!editMode ? true : false}
+        type="text"
+        value={firstName}
+      />
+      <label htmlFor="">Фамилия:</label>
+      <input
+        onChange={(e) => setSurname(e.target.value)}
+        type="text"
+        value={lastName}
+        disabled={!editMode ? true : false}
+      />
+      <label>Эл.почта:</label>
+      <input type="text" value={officer.email} disabled />
+      <label>Пароль:</label>
+      <input
+        onChange={(e) => setPassword(e.target.value)}
+        type="password"
+        value={password}
+        disabled
+      />
+      <label>Идент.номер:</label>
+      <input type="text" value={officer._id} disabled />
+      <div className="approved">
+        <label>Одобрен</label>
+        <input
+          type="checkbox"
+          value={approved}
+          disabled={!editMode ? true : false}
+          checked={approved}
+          onChange={() => setApproved(!approved)}
+        />
       </div>
-    </div>
+      <div className="butts">
+        {(!editMode && (
+          <button className="edit" onClick={handleEdit}>
+            редактировать
+          </button>
+        )) || (
+          <button className="saveRedact" onClick={handleSubmit}>
+            сохранить
+          </button>
+        )}
+        <button className="delete" onClick={handleDelete}>
+          удалить
+        </button>
+      </div>
+    </OfficerDetailStyles>
   );
 }
 

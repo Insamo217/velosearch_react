@@ -1,5 +1,11 @@
 import React from "react";
-import { MainStyles, AuthStyles, InputStyles } from "./styled";
+import {
+  FormStyles,
+  LabelStyles,
+  InputStyles,
+  ButtonClose,
+} from "globalStyles";
+import { Link } from "react-router-dom";
 
 function Auth({
   admin,
@@ -12,33 +18,39 @@ function Auth({
   loading,
 }) {
   return (
-    <MainStyles>
+    <>
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <AuthStyles>
-            <h2>Sign in</h2>
-            <label>E-mail</label>
+          <FormStyles>
+            <h2>Авторизация</h2>
+            <LabelStyles>E-mail</LabelStyles>
             <InputStyles
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="text"
               required
             />
-            <label>Password</label>
+            <LabelStyles>Password</LabelStyles>
             <InputStyles
               value={password}
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-
-            <button className="btn btn-warning">Login</button>
+            <button className="btn btn-warning mt-3">Авторизоваться</button>
+            <Link to={"/"}>
+              <ButtonClose
+                type="button"
+                className="btn-close btn-close-white"
+                aria-label="Close"
+              ></ButtonClose>
+            </Link>
 
             <p>{message}</p>
-          </AuthStyles>
+          </FormStyles>
         </form>
       </div>
-    </MainStyles>
+    </>
   );
 }
 

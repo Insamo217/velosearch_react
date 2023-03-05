@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import { MainStyles, ReportStyles, InputStyles, LabelStyles } from "./styled";
+import {
+  FormStyles,
+  LabelStyles,
+  InputStyles,
+  ButtonClose,
+} from "globalStyles";
+import { Link } from "react-router-dom";
 
 function Report() {
   const [licenseNumber, setLicenseNumber] = useState("");
@@ -66,10 +72,10 @@ function Report() {
     console.log(type);
   }, [type]);
   return (
-    <MainStyles>
+    <>
       <div className="container">
         <form method="post" onSubmit={handleSubmit}>
-          <ReportStyles>
+          <FormStyles>
             <p>{message}</p>
             <h2>Сообщить о краже</h2>
             <LabelStyles>Номер лицензии* </LabelStyles>
@@ -99,15 +105,21 @@ function Report() {
             <LabelStyles>Тип велосипеда*</LabelStyles>
             <select onChange={handleType} value={type} required>
               <option value="">Выберите тип велосипеда</option>
-              <option value="mtb">MTB</option>
-              <option value="cross">Cross</option>
-              <option value="road">Road</option>
+              <option value="general">general</option>
+              <option value="sport">sport</option>
             </select>
-            <button className="btn btn-warning">Отправить</button>
-          </ReportStyles>
+            <button className="btn btn-warning mt-3">Отправить</button>
+            <Link to={"/"}>
+              <ButtonClose
+                type="button"
+                className="btn-close btn-close-white"
+                aria-label="Close"
+              ></ButtonClose>
+            </Link>
+          </FormStyles>
         </form>
       </div>
-    </MainStyles>
+    </>
   );
 }
 

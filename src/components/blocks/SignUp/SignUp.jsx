@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import {
-  MainStyles,
-  RegistrationStyles,
-  InputStyles,
+  FormStyles,
   LabelStyles,
-} from "./styled";
+  InputStyles,
+  ButtonClose,
+} from "globalStyles";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function SignUp() {
@@ -67,10 +68,10 @@ function SignUp() {
     setClientId(e.target.value);
   };
   return (
-    <MainStyles>
+    <>
       <div className="container">
         <form method="post" onSubmit={handleSubmit}>
-          <RegistrationStyles>
+          <FormStyles>
             <h2>Регистрация</h2>
             <LabelStyles>
               E-mail*
@@ -120,12 +121,19 @@ function SignUp() {
                 required
               />
             </LabelStyles>
-            <button className="btn btn-warning">Зарегистрироваться</button>
+            <button className="btn btn-warning mt-3">Зарегистрироваться</button>
             <p>{message}</p>
-          </RegistrationStyles>
+            <Link to={"/"}>
+              <ButtonClose
+                type="button"
+                className="btn-close btn-close-white"
+                aria-label="Close"
+              ></ButtonClose>
+            </Link>
+          </FormStyles>
         </form>
       </div>
-    </MainStyles>
+    </>
   );
 }
 

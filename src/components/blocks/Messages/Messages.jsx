@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ForAuth from "../Report/ForAuth";
 import ReportDetail from "./ReportDetail";
+import { FormStyles, ButtonClose } from "globalStyles";
 
 function Messages({ approved, setApproved }) {
   const [cases, setCases] = useState([]);
@@ -34,68 +35,63 @@ function Messages({ approved, setApproved }) {
   }, [detail, newMessage]);
 
   return (
-    <div>
+    <FormStyles>
       <h3>Все сообщения о кражах</h3>
-      <div className="wrapper">
-        <button
-          className="addMessage"
-          onClick={() => setNewMessage(!newMessage)}
-        >
-          Добавить сообщение
-        </button>
-
-        {(loading && (
-          <div className="loading" style={{ alignSelf: "center" }}>
-            loading...
-          </div>
-        )) ||
-          (cases.length === 0 && <div></div>) ||
-          (newMessage && (
-            <ForAuth
-              newMessage={newMessage}
-              setNewMessage={setNewMessage}
-              approved={approved}
-              setApproved={setApproved}
-            />
-          ))}
-        <div className="messageContainer">
-          {cases.map((item) => (
-            <div key={item._id} className="message">
-              <span
-                className="new"
-                style={{
-                  textAlign: "center",
-                  borderRadius: "10px",
-                  minWidth: "90px",
-                  backgroundColor:
-                    (item.status === "new" && "green") ||
-                    (item.status === "in_progress" && "rgb(209, 130, 19)") ||
-                    (item.status === "done" && "red"),
-                }}
-              >
-                {item.status}
-              </span>
-              <Link
-                onClick={handleDetail}
-                className="link"
-                to={`/cases/${item._id}`}
-              >
-                <li>{item.ownerFullName}</li>
-              </Link>
-            </div>
-          ))}
+      {(loading && (
+        <div className="loading" style={{ alignSelf: "center" }}>
+          loading...
         </div>
-        {detail && (
-          <ReportDetail
-            cases={cases}
-            detail={detail}
-            setDetail={setDetail}
+      )) ||
+        (cases.length === 0 && <div></div>) ||
+        (newMessage && (
+          <ForAuth
+            newMessage={newMessage}
+            setNewMessage={setNewMessage}
             approved={approved}
             setApproved={setApproved}
           />
-        )}
-      </div>
-    </div>
+        ))}
+      {cases.map((item) => (
+        <div key={item._id} className="mb-3">
+          <span
+            className="badge"
+            style={{
+              backgroundColor:
+                (item.status === "new" && "green") ||
+                (item.status === "in_progress" && "rgb(209, 130, 19)") ||
+                (item.status === "done" && "red"),
+            }}
+          >
+            {item.status}
+          </span>
+          <Link onClick={handleDetail} to={`/cases/${item._id}`}>
+            <li className="list-group-item">{item.ownerFullName}</li>
+          </Link>
+        </div>
+      ))}
+      <button
+        className="btn btn-outline-light mt-3"
+        onClick={() => setNewMessage(!newMessage)}
+      >
+        Добавить сообщение
+      </button>
+      <Link to={"/"}>
+        <ButtonClose
+          type="button"
+          className="btn-close btn-close-white"
+          aria-label="Close"
+        ></ButtonClose>
+      </Link>
+      {detail && (
+        <ReportDetail
+          cases={cases}
+          detail={detail}
+          setDetail={setDetail}
+          approved={approved}
+          setApproved={setApproved}
+        />
+      )}
+    </FormStyles>
   );
 }
 

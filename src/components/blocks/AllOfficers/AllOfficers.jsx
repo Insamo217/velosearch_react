@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import OfficerDetails from "./OfficerDetails";
+import { FormStyles, ButtonClose } from "globalStyles";
 
 function AllOfficers({ setApproved }) {
   //состояния для регистрации нового сотрудника
@@ -84,10 +85,17 @@ function AllOfficers({ setApproved }) {
   };
 
   return (
-    <div>
+    <FormStyles>
       <h2>Список всех зарегистрированных сотрудников</h2>
+      <Link to={"/"}>
+        <ButtonClose
+          type="button"
+          className="btn-close btn-close-white"
+          aria-label="Close"
+        ></ButtonClose>
+      </Link>
       <div>
-        <ol>
+        <ol className="list-group list-group-numbered mb-3">
           {(loading && <div className="loading">loading...</div>) ||
             info.map((worker) => (
               <div key={worker._id} className="approve">
@@ -96,13 +104,17 @@ function AllOfficers({ setApproved }) {
                   className="link"
                   to={`/officers/${worker._id}`}
                 >
-                  <li>{worker.email}</li>
+                  <li className="list-group-item list-group-item-warning mt-1">
+                    {worker.email}
+                  </li>
                 </Link>
               </div>
             ))}
         </ol>
         {(info.length === 0 && <div></div>) || (
-          <button onClick={handleAdd}>Добавить сотрудника</button>
+          <button className="btn btn-outline-light" onClick={handleAdd}>
+            Добавить сотрудника
+          </button>
         )}
         {(newWorker && (
           <form method="post" className="addOfficer" onSubmit={handleSubmit}>
@@ -166,7 +178,7 @@ function AllOfficers({ setApproved }) {
           )) ||
           null}
       </div>
-    </div>
+    </FormStyles>
   );
 }
 

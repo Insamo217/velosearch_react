@@ -9,6 +9,7 @@ import Footer from "components/layouts/Footer/Footer";
 import Report from "components/blocks/Report/Report";
 import Messages from "components/blocks/Messages/Messages";
 import AllOfficers from "components/blocks/AllOfficers/AllOfficers";
+import { Styles } from "globalStyles";
 import { useState } from "react";
 import axios from "axios";
 
@@ -55,18 +56,21 @@ function App() {
   };
   return (
     <Router>
+      <GlobalStyle />
       <Header
         phone="+7-000-000-00"
         mail="test@example.com"
-        btnNameLogin="Login"
-        btnNameSign="Sign-up"
+        btnNameLogin="Авторизация"
+        btnNameSign="Регистрация"
+        btnNameOfficers="Сотрудники"
+        btnNameCases="Сообщения"
       />
+
       <Routes>
         <Route
           path="/"
           element={
             <>
-              <GlobalStyle />
               <Main
                 title="Bike Search"
                 subtitle="Поиск пропавших велосипедов"
@@ -76,10 +80,9 @@ function App() {
           }
         />
         <Route
-          path="auth/sign_in"
+          path="sign_in/"
           element={
-            <>
-              <GlobalStyle />
+            <Styles>
               <Auth
                 admin={admin}
                 setAdmin={setAdmin}
@@ -93,48 +96,59 @@ function App() {
                 handleSubmit={handleSubmit}
                 loading={loading}
               />
-            </>
+            </Styles>
           }
         />
         <Route
-          path="auth/sign_up/"
+          path="sign_up/"
           element={
-            <>
-              <GlobalStyle />
+            <Styles>
               <SignUp />
-            </>
+            </Styles>
           }
         />
         <Route
-          path="public/report"
+          path="report/"
           element={
-            <>
-              <GlobalStyle />
+            <Styles>
               <Report />
-            </>
+            </Styles>
           }
         />
         <Route
-          path="/officers"
+          path="/officers/"
           element={
-            <AllOfficers approved={approved} setApproved={setApproved} />
+            <Styles>
+              <AllOfficers approved={approved} setApproved={setApproved} />
+            </Styles>
           }
         ></Route>
         <Route
           path="/cases/"
-          element={<Messages approved={approved} setApproved={setApproved} />}
+          element={
+            <Styles>
+              <Messages approved={approved} setApproved={setApproved} />
+            </Styles>
+          }
         ></Route>
         <Route
           path="/officers/:id"
           element={
-            <AllOfficers approved={approved} setApproved={setApproved} />
+            <Styles>
+              <AllOfficers approved={approved} setApproved={setApproved} />
+            </Styles>
           }
         ></Route>
         <Route
           path="/cases/:id"
-          element={<Messages approved={approved} setApproved={setApproved} />}
+          element={
+            <Styles>
+              <Messages approved={approved} setApproved={setApproved} />
+            </Styles>
+          }
         ></Route>
       </Routes>
+
       <Footer infoText="© 2023 Учебный проект Skillfactory" />
     </Router>
   );

@@ -37,7 +37,9 @@ function Auth({
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+
             <button className="btn btn-warning mt-3">Авторизоваться</button>
+
             <Link to={"/"}>
               <ButtonClose
                 type="button"
@@ -45,7 +47,6 @@ function Auth({
                 aria-label="Close"
               ></ButtonClose>
             </Link>
-
             <p>{message}</p>
           </FormStyles>
         </form>

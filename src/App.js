@@ -22,6 +22,7 @@ function App() {
   const [admin, setAdmin] = useState(
     localStorage.getItem(localStorage.getItem("admin") || false)
   );
+
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
@@ -47,6 +48,7 @@ function App() {
         if (response.data.data.token) {
           setAdmin(!admin);
           localStorage.setItem("admin", true);
+          window.location.replace("/");
         }
         setMessage("Вы авторизованы");
       })
@@ -60,7 +62,7 @@ function App() {
       <Header
         phone="+7-000-000-00"
         mail="test@example.com"
-        btnNameLogin="Авторизация"
+        btnNameLogin="Войти"
         btnNameSign="Регистрация"
         btnNameOfficers="Сотрудники"
         btnNameCases="Сообщения"

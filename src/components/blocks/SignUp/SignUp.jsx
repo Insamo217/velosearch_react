@@ -40,7 +40,10 @@ function SignUp() {
           setLastName("");
           setClientId("");
           setMessage("Поздравлем! Вы зарегистрированы!");
-          console.log(response);
+
+          setTimeout(() => {
+            window.location.replace("/sign_in/");
+          }, 2000);
         },
         {
           "Content-Type": "application/json",
@@ -116,6 +119,7 @@ function SignUp() {
               <InputStyles
                 onChange={changeId}
                 type="text"
+                placeholder="e269c62f-0ec1-4e69-a9ad-c65947489938"
                 name="client id"
                 value={clientId}
                 required

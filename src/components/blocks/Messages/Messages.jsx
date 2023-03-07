@@ -51,24 +51,28 @@ function Messages({ approved, setApproved }) {
             setApproved={setApproved}
           />
         ))}
-      {cases.map((item) => (
-        <div key={item._id} className="mb-3">
-          <span
-            className="badge"
-            style={{
-              backgroundColor:
-                (item.status === "new" && "green") ||
-                (item.status === "in_progress" && "rgb(209, 130, 19)") ||
-                (item.status === "done" && "red"),
-            }}
-          >
-            {item.status}
-          </span>
-          <Link onClick={handleDetail} to={`/cases/${item._id}`}>
-            <li className="list-group-item">{item.ownerFullName}</li>
-          </Link>
-        </div>
-      ))}
+      <ol>
+        {cases.map((item) => (
+          <li key={item._id} className="mb-3">
+            <Link onClick={handleDetail} to={`/cases/${item._id}`}>
+              <li>
+                {item.ownerFullName}{" "}
+                <span
+                  className="badge"
+                  style={{
+                    backgroundColor:
+                      (item.status === "new" && "green") ||
+                      (item.status === "in_progress" && "rgb(209, 130, 19)") ||
+                      (item.status === "done" && "red"),
+                  }}
+                >
+                  {item.status}
+                </span>
+              </li>
+            </Link>
+          </li>
+        ))}
+      </ol>
       <button
         className="btn btn-outline-light mt-3"
         onClick={() => setNewMessage(!newMessage)}

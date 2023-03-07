@@ -43,8 +43,8 @@ function App() {
         setLoading(false);
         setData(response.data);
         localStorage.setItem("token", response.data.data.token);
-        console.log(response);
-        if (response.data.data.user.approved === true) {
+
+        if (response.data.data.token) {
           setAdmin(!admin);
           localStorage.setItem("admin", true);
         }
@@ -64,6 +64,8 @@ function App() {
         btnNameSign="Регистрация"
         btnNameOfficers="Сотрудники"
         btnNameCases="Сообщения"
+        setAdmin={setAdmin}
+        admin={admin}
       />
 
       <Routes>

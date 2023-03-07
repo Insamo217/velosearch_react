@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeaderStyles } from "./styled";
 import logo from "assets/logo6.png";
 import { Link } from "react-router-dom";
@@ -10,7 +10,22 @@ function Header({
   btnNameSign,
   btnNameOfficers,
   btnNameCases,
+  admin,
+  setAdmin,
 }) {
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("admin");
+    if (loggedInUser) {
+      setAdmin(loggedInUser);
+    }
+  }, []);
+
+  const handleClick = () => {
+    setAdmin(!admin);
+    localStorage.removeItem("token");
+    localStorage.removeItem("admin");
+  };
+
   return (
     <HeaderStyles>
       <div className="container">
@@ -47,18 +62,40 @@ function Header({
               </svg>
               <span className="px-2">{mail}</span>
             </div>
-            <button type="button" class="btn btn-outline-danger mx-4">
-              <Link to={"/officers/"}>{btnNameOfficers}</Link>
-            </button>
-            <button type="button" class="btn btn-outline-danger mx-4">
-              <Link to={"/cases/"}>{btnNameCases}</Link>
-            </button>
-            <button type="button" class="btn btn-outline-light mx-4">
-              <Link to={"/sign_in/"}>{btnNameLogin}</Link>
-            </button>
-            <button type="button" class="btn btn-warning mx-4">
-              <Link to={"/sign_up"}>{btnNameSign}</Link>
-            </button>
+
+            {admin && (
+              <>
+                <button type="button" class="btn btn-outline-danger mx-4">
+                  <Link to={"/officers/"}>{btnNameOfficers}</Link>
+                </button>
+                <button type="button" class="btn btn-outline-danger mx-4">
+                  <Link to={"/cases/"}>{btnNameCases}</Link>
+                </button>
+              </>
+            )}
+
+            {(!admin && (
+              <>
+                <button type="button" class="btn btn-outline-light mx-4">
+                  <Link to={"/sign_in/"}>{btnNameLogin}</Link>
+                </button>
+                <button type="button" class="btn btn-warning mx-4">
+                  <Link to={"/sign_up"}>{btnNameSign}</Link>
+                </button>
+              </>
+            )) || (
+              <>
+                <Link className="link" to={"/"}>
+                  <button
+                    type="button"
+                    class="btn btn-warning mx-4"
+                    onClick={handleClick}
+                  >
+                    Выйти
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

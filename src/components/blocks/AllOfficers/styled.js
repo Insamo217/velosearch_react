@@ -7,8 +7,8 @@ export const OfficerDetailStyles = styled.div`
   top: -5px;
   border: 3px solid #dc3545;
   width: 101%;
-  height: 103%;
   background: #100f0e;
   left: -5px;
   padding: 20px 20%;
+  align-items: center;
 `;

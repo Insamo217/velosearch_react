@@ -38,7 +38,6 @@ function Report() {
   };
   const handleType = (e) => {
     setType(e.target.value);
-    console.log(type);
   };
 
   const handleSubmit = (e) => {
@@ -108,6 +107,7 @@ function Report() {
               <option value="general">general</option>
               <option value="sport">sport</option>
             </select>
+
             <button className="btn btn-warning mt-3">Отправить</button>
             <Link to={"/"}>
               <ButtonClose

@@ -55,6 +55,7 @@ export const FormStyles = styled.div`
 
 export const InputStyles = styled.input`
   margin-bottom: 15px;
+  width: 235px;
 `;
 
 export const LabelStyles = styled.label`

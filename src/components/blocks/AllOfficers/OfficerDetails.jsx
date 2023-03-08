@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { OfficerDetailStyles } from "./styled";
-import { ButtonClose } from "globalStyles";
+
+import { InputStyles, ButtonClose, LabelStyles } from "globalStyles";
 
 function OfficerDetails({ detail, setDetail, info, allWorkers }) {
   const { id } = useParams();
@@ -79,34 +80,34 @@ function OfficerDetails({ detail, setDetail, info, allWorkers }) {
         ></ButtonClose>
       </Link>
 
-      <label htmlFor="">Имя:</label>
-      <input
+      <LabelStyles htmlFor="">Имя:</LabelStyles>
+      <InputStyles
         onChange={(e) => setName(e.target.value)}
         disabled={!editMode ? true : false}
         type="text"
         value={firstName}
       />
-      <label htmlFor="">Фамилия:</label>
-      <input
+      <LabelStyles htmlFor="">Фамилия:</LabelStyles>
+      <InputStyles
         onChange={(e) => setSurname(e.target.value)}
         type="text"
         value={lastName}
         disabled={!editMode ? true : false}
       />
-      <label>Эл.почта:</label>
-      <input type="text" value={officer.email} disabled />
-      <label>Пароль:</label>
-      <input
+      <LabelStyles>Эл.почта:</LabelStyles>
+      <InputStyles type="text" value={officer.email} disabled />
+      <LabelStyles>Пароль:</LabelStyles>
+      <InputStyles
         onChange={(e) => setPassword(e.target.value)}
         type="password"
         value={password}
         disabled
       />
-      <label>Идент.номер:</label>
-      <input type="text" value={officer._id} disabled />
-      <div className="approved">
-        <label>Одобрен</label>
-        <input
+      <LabelStyles>Идент.номер:</LabelStyles>
+      <InputStyles type="text" value={officer._id} disabled />
+      <div>
+        <LabelStyles>Одобрен</LabelStyles>
+        <InputStyles
           type="checkbox"
           value={approved}
           disabled={!editMode ? true : false}
@@ -114,17 +115,17 @@ function OfficerDetails({ detail, setDetail, info, allWorkers }) {
           onChange={() => setApproved(!approved)}
         />
       </div>
-      <div className="butts">
+      <div className="d-flex justify-content-between w-35">
         {(!editMode && (
-          <button className="edit" onClick={handleEdit}>
+          <button className="btn btn-light" onClick={handleEdit}>
             редактировать
           </button>
         )) || (
-          <button className="saveRedact" onClick={handleSubmit}>
+          <button className="btn btn-light" onClick={handleSubmit}>
             сохранить
           </button>
         )}
-        <button className="delete" onClick={handleDelete}>
+        <button className="btn btn-light" onClick={handleDelete}>
           удалить
         </button>
       </div>

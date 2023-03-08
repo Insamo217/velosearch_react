@@ -36,7 +36,7 @@ function Messages({ approved, setApproved }) {
 
   return (
     <FormStyles>
-      <h3>Все сообщения о кражах</h3>
+      <h2>Все сообщения о кражах</h2>
       {(loading && (
         <div className="loading" style={{ alignSelf: "center" }}>
           loading...
@@ -51,14 +51,16 @@ function Messages({ approved, setApproved }) {
             setApproved={setApproved}
           />
         ))}
-      <ol>
+      <ul className="list-group">
         {cases.map((item) => (
-          <li key={item._id} className="mb-3">
+          <li
+            key={item._id}
+            className="list-group-item list-group-item-warning mb-3"
+          >
             <Link onClick={handleDetail} to={`/cases/${item._id}`}>
-              <li>
-                {item.ownerFullName}{" "}
+              <div className="text-start">
                 <span
-                  className="badge"
+                  className="badge me-2"
                   style={{
                     backgroundColor:
                       (item.status === "new" && "green") ||
@@ -68,11 +70,12 @@ function Messages({ approved, setApproved }) {
                 >
                   {item.status}
                 </span>
-              </li>
+                {item.ownerFullName}
+              </div>
             </Link>
           </li>
         ))}
-      </ol>
+      </ul>
       <button
         className="btn btn-outline-light mt-3"
         onClick={() => setNewMessage(!newMessage)}

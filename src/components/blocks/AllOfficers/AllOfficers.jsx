@@ -95,7 +95,7 @@ function AllOfficers({ setApproved }) {
         ></ButtonClose>
       </Link>
       <div>
-        <ol className="list-group list-group-numbered mb-3">
+        <ul className="list-group mb-3">
           {(loading && <div className="loading">loading...</div>) ||
             info.map((worker) => (
               <div key={worker._id} className="approve">
@@ -110,7 +110,7 @@ function AllOfficers({ setApproved }) {
                 </Link>
               </div>
             ))}
-        </ol>
+        </ul>
         {(info.length === 0 && <div></div>) || (
           <button className="btn btn-outline-light" onClick={handleAdd}>
             Добавить сотрудника

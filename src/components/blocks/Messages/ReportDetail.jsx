@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import { ReportDetailStyles } from "./styled";
+import { ReportDetailStyles, LabelStyles } from "./styled";
 import { ButtonClose } from "globalStyles";
 
 function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
@@ -113,7 +113,7 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
   };
   return (
     <ReportDetailStyles>
-      <h3>Детали кражи</h3>
+      <h2 className="my-4">Детали кражи</h2>
       <Link to={`/cases/`}>
         <ButtonClose
           type="button"
@@ -123,76 +123,21 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
         ></ButtonClose>
       </Link>
       <div class="row">
-        <div class="col-md-6 d-flex flex-column">
-          <label>
-            Номер заявки <br />
+        <div class="col-md-6 d-flex flex-column align-items-center">
+          <LabelStyles>
+            Номер заявки
             <input type="text" value={report._id} disabled />
-          </label>
-          <label>
-            Цвет
-            <br />
-            <input
-              type="text"
-              onChange={(e) => setColor(e.target.value)}
-              value={color}
-              disabled={!editMode ? true : false}
-              style={{
-                color: editMode && "black",
-                backgroundColor: editMode && "white",
-              }}
-            />
-          </label>
-          <label>
+          </LabelStyles>
+          <LabelStyles>
             Создано
-            <br />
             <input type="text" value={report.createdAt} disabled />
-          </label>
-          <label>
-            Дата кражи
-            <br />
-            <input
-              onChange={(e) => setDate(e.target.value)}
-              value={date}
-              style={{
-                color: editMode && "black",
-                backgroundColor: editMode && "white",
-              }}
-              disabled={!editMode ? true : false}
-            />
-          </label>
-        </div>
-        <div class="col-md-6 d-flex flex-column">
-          <label>
-            Описание
-            <br />
-            <input
-              type="text"
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-              style={{
-                color: editMode && "black",
-                backgroundColor: editMode && "white",
-              }}
-              disabled={!editMode ? true : false}
-            />
-          </label>
-          <label>
-            Номер велосипеда
-            <br />
-            <input
-              type="text"
-              onChange={(e) => setLicenseNumber(e.target.value)}
-              value={licenseNumber}
-              style={{
-                color: editMode && "black",
-                backgroundColor: editMode && "white",
-              }}
-              disabled={!editMode ? true : false}
-            />
-          </label>
-          <label>
+          </LabelStyles>
+          <LabelStyles>
+            Обновлено
+            <input type="text" value={report.updatedAt} disabled />
+          </LabelStyles>
+          <LabelStyles>
             Сотрудник
-            <br />
             <select
               value={officer}
               onChange={handleOfficer}
@@ -209,10 +154,29 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
                 </option>
               ))}
             </select>
-          </label>
-          <label>
+          </LabelStyles>
+          <LabelStyles>
+            Статус
+            <select
+              onChange={(e) => setStatus(e.target.value)}
+              defaultValue={"default"}
+              value={status}
+              style={{
+                color: editMode && "black",
+                backgroundColor: editMode && "white",
+              }}
+              disabled={!editMode ? true : false}
+            >
+              <option value="new">new</option>
+
+              <option value="in_progress">in_progress</option>
+              <option value="done">done</option>
+            </select>
+          </LabelStyles>
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center">
+          <LabelStyles>
             Имя владельца
-            <br />
             <input
               type="text"
               onChange={(e) => setOwnerFullName(e.target.value)}
@@ -223,15 +187,81 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
               }}
               disabled={!editMode ? true : false}
             />
-          </label>
+          </LabelStyles>
+
+          <LabelStyles>
+            Дата кражи
+            <input
+              onChange={(e) => setDate(e.target.value)}
+              value={date}
+              style={{
+                color: editMode && "black",
+                backgroundColor: editMode && "white",
+              }}
+              disabled={!editMode ? true : false}
+            />
+          </LabelStyles>
+          <LabelStyles>
+            Номер велосипеда
+            <input
+              type="text"
+              onChange={(e) => setLicenseNumber(e.target.value)}
+              value={licenseNumber}
+              style={{
+                color: editMode && "black",
+                backgroundColor: editMode && "white",
+              }}
+              disabled={!editMode ? true : false}
+            />
+          </LabelStyles>
+          <LabelStyles>
+            Тип
+            <select
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              style={{
+                color: editMode && "black",
+                backgroundColor: editMode && "white",
+              }}
+              disabled={!editMode ? true : false}
+            >
+              <option value="sport">sport</option>
+              <option value="general">general</option>
+            </select>
+          </LabelStyles>
+          <LabelStyles>
+            Цвет
+            <input
+              type="text"
+              onChange={(e) => setColor(e.target.value)}
+              value={color}
+              disabled={!editMode ? true : false}
+              style={{
+                color: editMode && "black",
+                backgroundColor: editMode && "white",
+              }}
+            />
+          </LabelStyles>
         </div>
       </div>
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column align-items-center">
+        <LabelStyles>
+          Описание
+          <textarea
+            type="text"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            style={{
+              color: editMode && "black",
+              backgroundColor: editMode && "white",
+            }}
+            disabled={!editMode ? true : false}
+          />
+        </LabelStyles>
         {status === "done" && (
-          <label>
+          <LabelStyles>
             Решение
-            <br />
-            <input
+            <textarea
               onChange={(e) => setResolution(e.target.value)}
               type="text"
               value={resolution}
@@ -242,68 +272,33 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
               disabled={!editMode ? true : false}
               required
             />
-          </label>
+          </LabelStyles>
         )}
-
-        <label>
-          Статус
-          <br />
-          <select
-            onChange={(e) => setStatus(e.target.value)}
-            defaultValue={"default"}
-            value={status}
-            style={{
-              color: editMode && "black",
-              backgroundColor: editMode && "white",
-            }}
-            disabled={!editMode ? true : false}
-          >
-            <option value="new">new</option>
-
-            <option value="in_progress">in_progress</option>
-            <option value="done">done</option>
-          </select>
-        </label>
-        <label>
-          Тип
-          <br />
-          <select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            style={{
-              color: editMode && "black",
-              backgroundColor: editMode && "white",
-            }}
-            disabled={!editMode ? true : false}
-          >
-            <option value="sport">sport</option>
-            <option value="general">general</option>
-          </select>
-        </label>
-        <label>
-          Обновлено
-          <br />
-          <input type="text" value={report.updatedAt} disabled />
-        </label>
       </div>
-      {(!editMode && (
-        <div
-          onClick={() => setEdit(!editMode)}
-          className="editDetail"
-          role="button"
-        >
-          Редактировать
-        </div>
-      )) || (
-        <div onClick={handleSubmit} className="saveDetail" role="button">
-          Сохранить
-        </div>
-      )}
-      <Link to={`/cases/`}>
-        <div onClick={handleDelete} className="deleteDetail" role="button">
-          Удалить
-        </div>
-      </Link>
+      <div className="d-flex justify-content-evenly w-100 my-4">
+        {(!editMode && (
+          <button
+            type="button"
+            className="btn btn-warning"
+            onClick={() => setEdit(!editMode)}
+          >
+            Редактировать
+          </button>
+        )) || (
+          <div onClick={handleSubmit} className="btn btn-warning" role="button">
+            Сохранить
+          </div>
+        )}
+        <Link to={`/cases/`}>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+          >
+            Удалить
+          </button>
+        </Link>
+      </div>
     </ReportDetailStyles>
   );
 }

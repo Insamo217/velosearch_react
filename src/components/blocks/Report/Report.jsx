@@ -7,6 +7,7 @@ import {
   InputStyles,
   ButtonClose,
 } from "globalStyles";
+import { TextareaStyles } from "./styled";
 import { Link } from "react-router-dom";
 
 function Report() {
@@ -96,7 +97,7 @@ function Report() {
             <LabelStyles>Дата кражи</LabelStyles>
             <InputStyles onChange={handleDate} value={date} type="date" />
             <LabelStyles>Дополнительная информация</LabelStyles>
-            <InputStyles
+            <TextareaStyles
               onChange={handleInfo}
               value={description}
               type="text"

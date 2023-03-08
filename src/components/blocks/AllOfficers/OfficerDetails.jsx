@@ -115,7 +115,7 @@ function OfficerDetails({ detail, setDetail, info, allWorkers }) {
           onChange={() => setApproved(!approved)}
         />
       </div>
-      <div className="d-flex justify-content-between w-35">
+      <div className="d-flex justify-content-between w-50">
         {(!editMode && (
           <button className="btn btn-light" onClick={handleEdit}>
             редактировать

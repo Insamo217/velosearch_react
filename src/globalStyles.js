@@ -28,7 +28,7 @@ export const Styles = styled.div`
   color: white;
   text-align: center;
   height: 826px;
-  padding-top: 150px;
+  padding-top: 100px;
   &:after {
     content: "";
     position: absolute;
@@ -55,7 +55,7 @@ export const FormStyles = styled.div`
 
 export const InputStyles = styled.input`
   margin-bottom: 15px;
-  width: 235px;
+  width: 245px;
 `;
 
 export const LabelStyles = styled.label`

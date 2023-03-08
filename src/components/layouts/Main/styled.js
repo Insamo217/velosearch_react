@@ -8,7 +8,7 @@ export const MainStyles = styled.main`
   color: white;
   text-align: center;
   height: 826px;
-  padding-top: 150px;
+  padding-top: 100px;
 `;
 
 export const Title = styled.h2`

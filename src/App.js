@@ -84,7 +84,7 @@ function App() {
           }
         />
         <Route
-          path="sign_in/"
+          path="/sign_in/"
           element={
             <Styles>
               <Auth
@@ -104,7 +104,7 @@ function App() {
           }
         />
         <Route
-          path="sign_up/"
+          path="/sign_up/"
           element={
             <Styles>
               <SignUp />
@@ -112,10 +112,10 @@ function App() {
           }
         />
         <Route
-          path="report/"
+          path="/report/"
           element={
             <Styles>
-              <Report />
+              <Report approved={approved} setApproved={setApproved} />
             </Styles>
           }
         />

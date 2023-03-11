@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { ReportAuthDetailStyles } from "./styled";
+import { InputStyles, ButtonClose, LabelStyles } from "globalStyles";
+import { Link } from "react-router-dom";
 
 function ForAuth({ newMessage, setNewMessage, approved, setApproved }) {
   const [licenseNumber, setLicenseNumber] = useState("");
@@ -100,58 +103,73 @@ function ForAuth({ newMessage, setNewMessage, approved, setApproved }) {
   };
 
   return (
-    <form className="modalForm" method="post" onSubmit={handleSubmit}>
-      <h2>Сообщить о краже</h2>
-      <p>{message}</p>
-      <div className="modalSubContainer">
-        <span onClick={() => setNewMessage(!newMessage)}>X</span>
+    <ReportAuthDetailStyles>
+      <form className="modalForm" method="post" onSubmit={handleSubmit}>
+        <h2>Сообщить о краже</h2>
+        <p>{message}</p>
+        <div className="modalSubContainer">
+          <Link to={`/cases/`}>
+            <ButtonClose
+              type="button"
+              className="btn-close btn-close-white"
+              aria-label="Close"
+              onClick={() => setNewMessage(!newMessage)}
+            ></ButtonClose>
+          </Link>
 
-        <div>
-          <label>Ответственный сотрудник </label>
-          <select onChange={handleOfficer} value={officer}>
-            <option>Выберите сотрудника</option>
-            {listOfApproved.map((officer) => (
-              <option key={officer._id} value={officer._id}>
-                {officer.firstName} {officer.lastName}
-              </option>
-            ))}
-          </select>
+          <div>
+            <LabelStyles>Ответственный сотрудник </LabelStyles>
+            <select onChange={handleOfficer} value={officer}>
+              <option>Выберите сотрудника</option>
+              {listOfApproved.map((officer) => (
+                <option key={officer._id} value={officer._id}>
+                  {officer.firstName} {officer.lastName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <LabelStyles>Номер лицензии</LabelStyles>
+            <InputStyles
+              onChange={handleNumber}
+              value={licenseNumber}
+              type="text"
+              required
+            />
+            <LabelStyles>ФИО клиента</LabelStyles>
+            <InputStyles
+              onChange={handleName}
+              value={ownerFullName}
+              type="text"
+              required
+            />
+          </div>
+          <div>
+            <LabelStyles>Цвет велосипеда </LabelStyles>
+            <InputStyles onChange={handleColor} value={color} type="text" />
+            <LabelStyles>Дата кражи</LabelStyles>
+            <InputStyles onChange={handleDate} value={date} type="date" />
+          </div>
+          <div>
+            <LabelStyles>Дополнительная информация</LabelStyles>
+            <InputStyles
+              onChange={handleInfo}
+              value={description}
+              type="text"
+            />
+            <LabelStyles>Тип велосипеда </LabelStyles>
+            <select onChange={handleType} value={type} required>
+              <option value="">Выберите тип велосипеда</option>
+              <option value="general">general</option>
+              <option value="sport">sport</option>
+            </select>
+          </div>
+          <button className="btn btn-warning mt-3" type="submit">
+            Отправить
+          </button>
         </div>
-        <div>
-          <label>Номер лицензии</label>
-          <input
-            onChange={handleNumber}
-            value={licenseNumber}
-            type="text"
-            required
-          />
-          <label>ФИО клиента</label>
-          <input
-            onChange={handleName}
-            value={ownerFullName}
-            type="text"
-            required
-          />
-        </div>
-        <div>
-          <label>Цвет велосипеда </label>
-          <input onChange={handleColor} value={color} type="text" />
-          <label>Дата кражи</label>
-          <input onChange={handleDate} value={date} type="date" />
-        </div>
-        <div>
-          <label>Дополнительная информация</label>
-          <input onChange={handleInfo} value={description} type="text" />
-          <label>Тип велосипеда </label>
-          <select onChange={handleType} value={type} required>
-            <option value="">Выберите тип велосипеда</option>
-            <option value="general">general</option>
-            <option value="sport">sport</option>
-          </select>
-        </div>
-        <button type="submit">Отправить</button>
-      </div>
-    </form>
+      </form>
+    </ReportAuthDetailStyles>
   );
 }
 

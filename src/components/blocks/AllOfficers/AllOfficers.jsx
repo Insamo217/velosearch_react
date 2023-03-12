@@ -92,7 +92,7 @@ function AllOfficers({ setApproved }) {
 
   return (
     <FormStyles>
-      <h2>Список всех зарегистрированных сотрудников</h2>
+      <h2>Зарегистрированные сотрудники</h2>
       <Link to={"/"}>
         <ButtonClose
           type="button"

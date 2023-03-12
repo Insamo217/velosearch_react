@@ -8,6 +8,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: Roboto;
   }
 
+  h2 {
+    font-family: "Seymour One";
+    margin: 5px 0 20px;
+  }
+  
   p {
     margin: 0;
     padding: 0;

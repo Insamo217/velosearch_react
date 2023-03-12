@@ -8,8 +8,7 @@ function Header({
   mail,
   btnNameLogin,
   btnNameSign,
-  btnNameOfficers,
-  btnNameCases,
+
   admin,
   setAdmin,
 }) {
@@ -62,17 +61,6 @@ function Header({
               </svg>
               <span className="px-2">{mail}</span>
             </div>
-
-            {admin && (
-              <>
-                <button type="button" class="btn btn-outline-danger mx-4">
-                  <Link to={"/officers/"}>{btnNameOfficers}</Link>
-                </button>
-                <button type="button" class="btn btn-outline-danger mx-4">
-                  <Link to={"/cases/"}>{btnNameCases}</Link>
-                </button>
-              </>
-            )}
 
             {(!admin && (
               <>

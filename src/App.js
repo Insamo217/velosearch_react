@@ -64,8 +64,6 @@ function App() {
         mail="test@example.com"
         btnNameLogin="Войти"
         btnNameSign="Регистрация"
-        btnNameOfficers="Сотрудники"
-        btnNameCases="Сообщения"
         setAdmin={setAdmin}
         admin={admin}
       />
@@ -79,6 +77,10 @@ function App() {
                 title="Bike Search"
                 subtitle="Поиск пропавших велосипедов"
                 btntext="Сообщить о краже"
+                btnNameOfficers="Сотрудники"
+                btnNameCases="Сообщения"
+                setAdmin={setAdmin}
+                admin={admin}
               />
             </>
           }

@@ -3,15 +3,7 @@ import { HeaderStyles } from "./styled";
 import logo from "assets/logo6.png";
 import { Link } from "react-router-dom";
 
-function Header({
-  phone,
-  mail,
-  btnNameLogin,
-  btnNameSign,
-
-  admin,
-  setAdmin,
-}) {
+function Header({ phone, mail, btnNameLogin, btnNameSign, admin, setAdmin }) {
   useEffect(() => {
     const loggedInUser = localStorage.getItem("admin");
     if (loggedInUser) {
@@ -73,7 +65,7 @@ function Header({
               </>
             )) || (
               <>
-                <Link className="link" to={"/"}>
+                <Link to={"/"}>
                   <button
                     type="button"
                     class="btn btn-warning mx-4"

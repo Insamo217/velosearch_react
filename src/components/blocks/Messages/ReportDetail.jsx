@@ -168,7 +168,6 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
               disabled={!editMode ? true : false}
             >
               <option value="new">new</option>
-
               <option value="in_progress">in_progress</option>
               <option value="done">done</option>
             </select>

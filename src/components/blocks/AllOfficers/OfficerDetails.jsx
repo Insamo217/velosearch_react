@@ -1,11 +1,9 @@
 import React from "react";
-
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { OfficerDetailStyles } from "./styled";
-
 import { InputStyles, ButtonClose, LabelStyles } from "globalStyles";
 
 function OfficerDetails({ detail, setDetail, info, allWorkers }) {

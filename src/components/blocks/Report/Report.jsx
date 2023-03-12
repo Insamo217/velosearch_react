@@ -62,7 +62,6 @@ function Report() {
         setDate("");
         setDescription("");
         setMessage("Заявка отправлена");
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

@@ -48,7 +48,9 @@ function App() {
         if (response.data.data.token) {
           setAdmin(!admin);
           localStorage.setItem("admin", true);
-          window.location.replace("/");
+          setTimeout(() => {
+            window.location.replace("/");
+          }, 2000);
         }
         setMessage("Вы авторизованы");
       })

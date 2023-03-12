@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ForAuth from "../Report/ForAuth";
+import ForAuth from "../Report/ReportForAuth";
 import ReportDetail from "./ReportDetail";
 import { FormStyles, ButtonClose } from "globalStyles";
 import { ListMessages } from "./styled";
@@ -38,11 +38,7 @@ function Messages({ approved, setApproved }) {
   return (
     <FormStyles>
       <h2>Все сообщения о кражах</h2>
-      {(loading && (
-        <div className="loading" style={{ alignSelf: "center" }}>
-          loading...
-        </div>
-      )) ||
+      {(loading && <div style={{ alignSelf: "center" }}>loading...</div>) ||
         (cases.length === 0 && <div></div>) ||
         (newMessage && (
           <ForAuth

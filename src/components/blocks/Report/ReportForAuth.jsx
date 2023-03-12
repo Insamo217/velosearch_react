@@ -95,7 +95,6 @@ function ForAuth({ newMessage, setNewMessage, approved, setApproved }) {
         setDate("");
         setDescription("");
         setMessage("Заявка отправлена");
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -104,10 +103,10 @@ function ForAuth({ newMessage, setNewMessage, approved, setApproved }) {
 
   return (
     <ReportAuthDetailStyles>
-      <form className="modalForm" method="post" onSubmit={handleSubmit}>
+      <form method="post" onSubmit={handleSubmit}>
         <h2>Сообщить о краже</h2>
         <p>{message}</p>
-        <div className="modalSubContainer">
+        <div>
           <Link to={`/cases/`}>
             <ButtonClose
               type="button"

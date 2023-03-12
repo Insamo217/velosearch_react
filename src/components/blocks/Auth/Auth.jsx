@@ -8,14 +8,12 @@ import {
 import { Link } from "react-router-dom";
 
 function Auth({
-  admin,
   password,
   setPassword,
   email,
   setEmail,
   message,
   handleSubmit,
-  loading,
 }) {
   return (
     <>
@@ -37,9 +35,7 @@ function Auth({
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-
             <button className="btn btn-warning mt-3">Авторизоваться</button>
-
             <Link to={"/"}>
               <ButtonClose
                 type="button"

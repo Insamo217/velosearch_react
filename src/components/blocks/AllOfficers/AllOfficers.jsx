@@ -102,7 +102,7 @@ function AllOfficers({ setApproved }) {
       </Link>
       <div>
         <ListOfficer>
-          {(loading && <div className="loading">loading...</div>) ||
+          {(loading && <div>loading...</div>) ||
             info.map((worker) => (
               <div key={worker._id} className="approve">
                 <Link
@@ -125,7 +125,7 @@ function AllOfficers({ setApproved }) {
         {(newWorker && (
           <OfficerDetailStyles>
             <h2>Добавить сотрудника</h2>
-            <form method="post" className="addOfficer" onSubmit={handleSubmit}>
+            <form method="post" onSubmit={handleSubmit}>
               <div>
                 <span
                   style={{

@@ -12,3 +12,8 @@ export const OfficerDetailStyles = styled.div`
   padding: 20px 20%;
   align-items: center;
 `;
+
+export const ListOfficer = styled.ul`
+  height: 280px;
+  overflow-y: scroll;
+`;

@@ -4,7 +4,13 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import OfficerDetails from "./OfficerDetails";
-import { FormStyles, ButtonClose } from "globalStyles";
+import { OfficerDetailStyles, ListOfficer } from "./styled";
+import {
+  InputStyles,
+  LabelStyles,
+  FormStyles,
+  ButtonClose,
+} from "globalStyles";
 
 function AllOfficers({ setApproved }) {
   //состояния для регистрации нового сотрудника
@@ -95,7 +101,7 @@ function AllOfficers({ setApproved }) {
         ></ButtonClose>
       </Link>
       <div>
-        <ul className="list-group mb-3">
+        <ListOfficer>
           {(loading && <div className="loading">loading...</div>) ||
             info.map((worker) => (
               <div key={worker._id} className="approve">
@@ -104,69 +110,80 @@ function AllOfficers({ setApproved }) {
                   className="link"
                   to={`/officers/${worker._id}`}
                 >
-                  <li className="list-group-item list-group-item-warning mt-1">
+                  <li className="list-group-item list-group-item-warning p-2 mt-1">
                     {worker.email}
                   </li>
                 </Link>
               </div>
             ))}
-        </ul>
+        </ListOfficer>
         {(info.length === 0 && <div></div>) || (
           <button className="btn btn-outline-light" onClick={handleAdd}>
             Добавить сотрудника
           </button>
         )}
         {(newWorker && (
-          <form method="post" className="addOfficer" onSubmit={handleSubmit}>
-            <div>
-              <span
-                style={{
-                  color: "white",
-                  textAlign: "center",
-                  marginBottom: "20px",
-                }}
-              >
-                {message}
-              </span>
-              <label>E-mail </label>
-              <input
-                onChange={changeMail}
-                type="text"
-                name="email"
-                value={email}
-                required
-              />
+          <OfficerDetailStyles>
+            <h2>Добавить сотрудника</h2>
+            <form method="post" className="addOfficer" onSubmit={handleSubmit}>
+              <div>
+                <span
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    marginBottom: "20px",
+                  }}
+                >
+                  {message}
+                </span>
+                <LabelStyles>E-mail </LabelStyles>
+                <InputStyles
+                  onChange={changeMail}
+                  type="text"
+                  name="email"
+                  value={email}
+                  required
+                />
 
-              <label>Пароль</label>
-              <input
-                onChange={changePassword}
-                type="password"
-                name="пароль"
-                value={password}
-                required
-              />
+                <LabelStyles>Пароль</LabelStyles>
+                <InputStyles
+                  onChange={changePassword}
+                  type="password"
+                  name="пароль"
+                  value={password}
+                  required
+                />
 
-              <label>Имя</label>
-              <input
-                onChange={changeName}
-                type="text"
-                name="имя"
-                value={firstName}
-              />
+                <LabelStyles>Имя</LabelStyles>
+                <InputStyles
+                  onChange={changeName}
+                  type="text"
+                  name="имя"
+                  value={firstName}
+                />
 
-              <label>Фамилия</label>
-              <input
-                onChange={changeSurname}
-                type="text"
-                name="фамилия"
-                value={lastName}
-              />
-              <span onClick={handleClose} className="close">
-                X
-              </span>
-              <button>Добавить</button>
-            </div>
-          </form>
+                <LabelStyles>Фамилия</LabelStyles>
+                <InputStyles
+                  onChange={changeSurname}
+                  type="text"
+                  name="фамилия"
+                  value={lastName}
+                />
+                <Link to={`/officers/`}>
+                  <ButtonClose
+                    type="button"
+                    className="btn-close btn-close-white"
+                    aria-label="Close"
+                    onClick={handleClose}
+                  ></ButtonClose>
+                </Link>
+
+                <button className="btn btn-outline-light d-block m-auto mt-3">
+                  Добавить
+                </button>
+              </div>
+            </form>
+          </OfficerDetailStyles>
         )) ||
           (detail && (
             <OfficerDetails

@@ -17,3 +17,8 @@ export const LabelStyles = styled.label`
   flex-direction: column;
   width: 100%;
 `;
+
+export const ListMessages = styled.ul`
+  height: 350px;
+  overflow-y: scroll;
+`;

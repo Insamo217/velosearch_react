@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import ForAuth from "../Report/ForAuth";
 import ReportDetail from "./ReportDetail";
 import { FormStyles, ButtonClose } from "globalStyles";
+import { ListMessages } from "./styled";
 
 function Messages({ approved, setApproved }) {
   const [cases, setCases] = useState([]);
@@ -51,11 +52,11 @@ function Messages({ approved, setApproved }) {
             setApproved={setApproved}
           />
         ))}
-      <ul className="list-group">
+      <ListMessages>
         {cases.map((item) => (
           <li
             key={item._id}
-            className="list-group-item list-group-item-warning mb-3"
+            className="list-group-item list-group-item-warning p-2 mb-3"
           >
             <Link onClick={handleDetail} to={`/cases/${item._id}`}>
               <div className="text-start">
@@ -75,7 +76,7 @@ function Messages({ approved, setApproved }) {
             </Link>
           </li>
         ))}
-      </ul>
+      </ListMessages>
       <button
         className="btn btn-outline-light mt-3"
         onClick={() => setNewMessage(!newMessage)}

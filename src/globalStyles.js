@@ -34,6 +34,10 @@ export const Styles = styled.div`
   text-align: center;
   height: 826px;
   padding-top: 100px;
+  @media (max-width: 768px) {
+    height: 861px;
+    padding-top: 25px;
+  }
   &:after {
     content: "";
     position: absolute;

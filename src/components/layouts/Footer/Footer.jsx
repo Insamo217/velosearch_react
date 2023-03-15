@@ -6,11 +6,11 @@ function Footer({ infoText }) {
     <FooterStyles>
       <div className="container">
         <div className="row">
-          <div className="col-md-9">
+          <div className="col-md-6 col-lg-9">
             <p>{infoText}</p>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-md-6 col-lg-3">
             <span className="px-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

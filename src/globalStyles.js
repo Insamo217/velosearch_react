@@ -56,6 +56,9 @@ export const FormStyles = styled.div`
   width: 50%;
   margin: auto;
   align-items: center;
+  @media (max-width: 991px) {
+    width: 100%;
+  }
 `;
 
 export const InputStyles = styled.input`

@@ -20,14 +20,14 @@ function Header({ phone, mail, btnNameLogin, btnNameSign, admin, setAdmin }) {
   return (
     <HeaderStyles>
       <div className="container">
-        <div class="row align-items-center">
-          <div className="col-md-2">
+        <div class="row align-items-center text-center">
+          <div className="col-sm-6 col-lg-2">
             <Link to={"/"}>
               <img src={logo} alt="" />
             </Link>
           </div>
-          <div className="col-md-10 d-flex justify-content-end">
-            <div class="mx-4">
+          <div className="col-sm-6 col-lg-10 d-flex align-items-center justify-content-end">
+            <div class="mx-4 d-none d-lg-block">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -40,7 +40,7 @@ function Header({ phone, mail, btnNameLogin, btnNameSign, admin, setAdmin }) {
               </svg>
               <span className="px-2">{phone}</span>
             </div>
-            <div class="mx-4">
+            <div class="mx-4 d-none d-lg-block">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

@@ -106,67 +106,58 @@ function ForAuth({ newMessage, setNewMessage, approved, setApproved }) {
       <form method="post" onSubmit={handleSubmit}>
         <h2>Сообщить о краже</h2>
         <p>{message}</p>
-        <div>
-          <Link to={`/cases/`}>
-            <ButtonClose
-              type="button"
-              className="btn-close btn-close-white"
-              aria-label="Close"
-              onClick={() => setNewMessage(!newMessage)}
-            ></ButtonClose>
-          </Link>
 
-          <div>
-            <LabelStyles>Ответственный сотрудник </LabelStyles>
-            <select onChange={handleOfficer} value={officer}>
-              <option>Выберите сотрудника</option>
-              {listOfApproved.map((officer) => (
-                <option key={officer._id} value={officer._id}>
-                  {officer.firstName} {officer.lastName}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <LabelStyles>Номер лицензии</LabelStyles>
-            <InputStyles
-              onChange={handleNumber}
-              value={licenseNumber}
-              type="text"
-              required
-            />
-            <LabelStyles>ФИО клиента</LabelStyles>
-            <InputStyles
-              onChange={handleName}
-              value={ownerFullName}
-              type="text"
-              required
-            />
-          </div>
-          <div>
-            <LabelStyles>Цвет велосипеда </LabelStyles>
-            <InputStyles onChange={handleColor} value={color} type="text" />
-            <LabelStyles>Дата кражи</LabelStyles>
-            <InputStyles onChange={handleDate} value={date} type="date" />
-          </div>
-          <div>
-            <LabelStyles>Дополнительная информация</LabelStyles>
-            <TextareaStyles
-              onChange={handleInfo}
-              value={description}
-              type="text"
-            />
-            <LabelStyles>Тип велосипеда </LabelStyles>
-            <select onChange={handleType} value={type} required>
-              <option value="">Выберите тип велосипеда</option>
-              <option value="general">general</option>
-              <option value="sport">sport</option>
-            </select>
-          </div>
-          <button className="btn btn-warning mt-3" type="submit">
-            Отправить
-          </button>
-        </div>
+        <Link to={`/cases/`}>
+          <ButtonClose
+            type="button"
+            className="btn-close btn-close-white"
+            aria-label="Close"
+            onClick={() => setNewMessage(!newMessage)}
+          ></ButtonClose>
+        </Link>
+
+        <LabelStyles>Ответственный сотрудник </LabelStyles>
+        <select onChange={handleOfficer} value={officer}>
+          <option>Выберите сотрудника</option>
+          {listOfApproved.map((officer) => (
+            <option key={officer._id} value={officer._id}>
+              {officer.firstName} {officer.lastName}
+            </option>
+          ))}
+        </select>
+
+        <LabelStyles>Номер лицензии</LabelStyles>
+        <InputStyles
+          onChange={handleNumber}
+          value={licenseNumber}
+          type="text"
+          required
+        />
+        <LabelStyles>ФИО клиента</LabelStyles>
+        <InputStyles
+          onChange={handleName}
+          value={ownerFullName}
+          type="text"
+          required
+        />
+
+        <LabelStyles>Цвет велосипеда </LabelStyles>
+        <InputStyles onChange={handleColor} value={color} type="text" />
+        <LabelStyles>Дата кражи</LabelStyles>
+        <InputStyles onChange={handleDate} value={date} type="date" />
+
+        <LabelStyles>Дополнительная информация</LabelStyles>
+        <TextareaStyles onChange={handleInfo} value={description} type="text" />
+        <LabelStyles>Тип велосипеда </LabelStyles>
+        <select onChange={handleType} value={type} required>
+          <option value="">Выберите тип велосипеда</option>
+          <option value="general">general</option>
+          <option value="sport">sport</option>
+        </select>
+
+        <button className="btn btn-warning mt-3 d-block m-auto" type="submit">
+          Отправить
+        </button>
       </form>
     </ReportAuthDetailStyles>
   );

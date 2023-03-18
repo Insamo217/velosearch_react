@@ -102,9 +102,13 @@ function AllOfficers({ setApproved }) {
       </Link>
       <div>
         <ListOfficer>
-          {(loading && <div>loading...</div>) ||
+          {(loading && (
+            <p className="fw-bold fst-italic text-uppercase">
+              данные загружаются...
+            </p>
+          )) ||
             info.map((worker) => (
-              <div key={worker._id} className="approve">
+              <div key={worker._id}>
                 <Link
                   onClick={() => setDetail(!detail)}
                   className="link"

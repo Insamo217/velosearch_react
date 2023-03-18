@@ -38,7 +38,11 @@ function Messages({ approved, setApproved }) {
   return (
     <FormStyles>
       <h2>Все сообщения о кражах</h2>
-      {(loading && <div style={{ alignSelf: "center" }}>loading...</div>) ||
+      {(loading && (
+        <p className="fw-bold fst-italic text-uppercase">
+          данные загружаются...
+        </p>
+      )) ||
         (cases.length === 0 && <div></div>) ||
         (newMessage && (
           <ForAuth

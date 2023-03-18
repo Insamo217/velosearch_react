@@ -10,6 +10,9 @@ export const ReportDetailStyles = styled.div`
   padding: 0 60px;
   background: #100f0e;
   left: -5px;
+  @media (max-width: 991px) {
+    left: -3px;
+  }
 `;
 
 export const LabelStyles = styled.label`

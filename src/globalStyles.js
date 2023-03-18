@@ -11,6 +11,9 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-family: "Seymour One";
     margin: 5px 0 20px;
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
   }
   
   p {
@@ -61,7 +64,7 @@ export const FormStyles = styled.div`
   margin: auto;
   align-items: center;
   @media (max-width: 991px) {
-    width: 100%;
+    width: 95%;
   }
 `;
 

@@ -19,4 +19,7 @@ export const ReportAuthDetailStyles = styled.div`
   left: -5px;
   padding: 20px 20%;
   align-items: center;
+  @media (max-width: 991px) {
+    left: -3px;
+  }
 `;

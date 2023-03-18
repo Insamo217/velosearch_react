@@ -113,13 +113,13 @@ function OfficerDetails({ detail, setDetail, info, allWorkers }) {
           onChange={() => setApproved(!approved)}
         />
       </div>
-      <div className="d-flex justify-content-between w-50">
+      <div className="d-flex justify-content-between">
         {(!editMode && (
-          <button className="btn btn-light" onClick={handleEdit}>
+          <button className="btn btn-light me-2" onClick={handleEdit}>
             редактировать
           </button>
         )) || (
-          <button className="btn btn-light" onClick={handleSubmit}>
+          <button className="btn btn-light me-2" onClick={handleSubmit}>
             сохранить
           </button>
         )}

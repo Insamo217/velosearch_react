@@ -9,6 +9,7 @@ import Footer from "components/layouts/Footer/Footer";
 import Report from "components/blocks/Report/Report";
 import Messages from "components/blocks/Messages/Messages";
 import AllOfficers from "components/blocks/AllOfficers/AllOfficers";
+import NotFound from "components/blocks/NotFound/NotFound";
 import { Styles } from "globalStyles";
 import { useState } from "react";
 import axios from "axios";
@@ -123,38 +124,63 @@ function App() {
             </Styles>
           }
         />
+        {admin && (
+          <>
+            <Route
+              path="/officers/"
+              element={
+                <Styles>
+                  <AllOfficers approved={approved} setApproved={setApproved} />
+                </Styles>
+              }
+            ></Route>
+          </>
+        )}
+
+        {admin && (
+          <>
+            <Route
+              path="/cases/"
+              element={
+                <Styles>
+                  <Messages approved={approved} setApproved={setApproved} />
+                </Styles>
+              }
+            ></Route>
+          </>
+        )}
+        {admin && (
+          <>
+            <Route
+              path="/officers/:id"
+              element={
+                <Styles>
+                  <AllOfficers approved={approved} setApproved={setApproved} />
+                </Styles>
+              }
+            ></Route>
+          </>
+        )}
+        {admin && (
+          <>
+            <Route
+              path="/cases/:id"
+              element={
+                <Styles>
+                  <Messages approved={approved} setApproved={setApproved} />
+                </Styles>
+              }
+            ></Route>
+          </>
+        )}
         <Route
-          path="/officers/"
+          path="*"
           element={
             <Styles>
-              <AllOfficers approved={approved} setApproved={setApproved} />
+              <NotFound />
             </Styles>
           }
-        ></Route>
-        <Route
-          path="/cases/"
-          element={
-            <Styles>
-              <Messages approved={approved} setApproved={setApproved} />
-            </Styles>
-          }
-        ></Route>
-        <Route
-          path="/officers/:id"
-          element={
-            <Styles>
-              <AllOfficers approved={approved} setApproved={setApproved} />
-            </Styles>
-          }
-        ></Route>
-        <Route
-          path="/cases/:id"
-          element={
-            <Styles>
-              <Messages approved={approved} setApproved={setApproved} />
-            </Styles>
-          }
-        ></Route>
+        />
       </Routes>
 
       <Footer infoText="© 2023 Учебный проект Skillfactory" />

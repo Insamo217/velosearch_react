@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import { ReportAuthDetailStyles } from "./styled";
+import { ReportAuthDetailStyles, TextareaStyles } from "./styled";
 import { InputStyles, ButtonClose, LabelStyles } from "globalStyles";
 import { Link } from "react-router-dom";
 
@@ -151,7 +151,7 @@ function ForAuth({ newMessage, setNewMessage, approved, setApproved }) {
           </div>
           <div>
             <LabelStyles>Дополнительная информация</LabelStyles>
-            <InputStyles
+            <TextareaStyles
               onChange={handleInfo}
               value={description}
               type="text"

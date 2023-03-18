@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import { ReportDetailStyles, LabelStyles } from "./styled";
+import { ReportDetailStyles, LabelStyles, TextareaStyles } from "./styled";
 import { ButtonClose } from "globalStyles";
 
 function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
@@ -246,7 +246,7 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
       <div className="d-flex flex-column align-items-center">
         <LabelStyles>
           Описание
-          <textarea
+          <TextareaStyles
             type="text"
             onChange={(e) => setDescription(e.target.value)}
             value={description}
@@ -260,7 +260,7 @@ function ReportDetail({ cases, setDetail, detail, approved, setApproved }) {
         {status === "done" && (
           <LabelStyles>
             Решение
-            <textarea
+            <TextareaStyles
               onChange={(e) => setResolution(e.target.value)}
               type="text"
               value={resolution}

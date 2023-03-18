@@ -22,3 +22,8 @@ export const ListMessages = styled.ul`
   height: 350px;
   overflow-y: scroll;
 `;
+
+export const TextareaStyles = styled.textarea`
+  height: 100px;
+  resize: none;
+`;
